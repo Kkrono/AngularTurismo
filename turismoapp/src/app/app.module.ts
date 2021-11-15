@@ -11,6 +11,7 @@ import { SitiosComponent } from './components/sitios/sitios.component';
 import { DepartamentosComponent } from './components/departamentos/departamentos.component';
 import { PaisesComponent } from './components/paises/paises.component';
 import { LoginComponent } from './components/login/login.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +23,14 @@ import { LoginComponent } from './components/login/login.component';
     SitiosComponent,
     DepartamentosComponent,
     PaisesComponent,
-    LoginComponent
+    LoginComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [LoginComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
