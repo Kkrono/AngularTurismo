@@ -12,6 +12,16 @@ import { DepartamentosComponent } from './components/departamentos/departamentos
 import { PaisesComponent } from './components/paises/paises.component';
 import { LoginComponent } from './components/login/login.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { FrmpaisComponent } from './components/paises/frmpais/frmpais.component';
+import { LstpaisComponent } from './components/paises/lstpais/lstpais.component';
+import { FrmdepartamentoComponent } from './components/departamentos/frmdepartamento/frmdepartamento.component';
+import { LstdepartamentoComponent } from './components/departamentos/lstdepartamento/lstdepartamento.component';
+import { FrmregionComponent } from './components/regiones/frmregion/frmregion.component';
+import { LstregionComponent } from './components/regiones/lstregion/lstregion.component';
+import { FrmsitioComponent } from './components/sitios/frmsitio/frmsitio.component';
+import { LstsitioComponent } from './components/sitios/lstsitio/lstsitio.component';
+import { FrmcomidaComponent } from './components/comidas/frmcomida/frmcomida.component';
+import { LstcomidaComponent } from './components/comidas/lstcomida/lstcomida.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +34,17 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     DepartamentosComponent,
     PaisesComponent,
     LoginComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    FrmpaisComponent,
+    LstpaisComponent,
+    FrmdepartamentoComponent,
+    LstdepartamentoComponent,
+    FrmregionComponent,
+    LstregionComponent,
+    FrmsitioComponent,
+    LstsitioComponent,
+    FrmcomidaComponent,
+    LstcomidaComponent
   ],
   imports: [
     BrowserModule,
