@@ -22,6 +22,9 @@ import { FrmsitioComponent } from './components/sitios/frmsitio/frmsitio.compone
 import { LstsitioComponent } from './components/sitios/lstsitio/lstsitio.component';
 import { FrmcomidaComponent } from './components/comidas/frmcomida/frmcomida.component';
 import { LstcomidaComponent } from './components/comidas/lstcomida/lstcomida.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,11 @@ import { LstcomidaComponent } from './components/comidas/lstcomida/lstcomida.com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DataTablesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

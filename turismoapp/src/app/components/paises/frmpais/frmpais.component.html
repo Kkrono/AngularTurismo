@@ -1,3 +1,56 @@
 <p>
   frmpais works!
 </p>
+<div class="card">
+  <div class="card-header">
+    Gestion de Paises (CRUD)
+  </div>
+  <div class="card-body">
+      <div class="container col-8" text-center>
+          <div class="row" *ngIf="idPk>0">
+              <div class="col-12">
+                <span class="badge bg-primary">Codigo Generado :{{idPk}}</span>
+              </div>
+            </div>
+          <div class="row">
+              <div class="col-12">
+                  <form [formGroup]="frmRegistro" id="frmdatareg">
+                      <div class="form-group">
+                          <label for="nombre_pais">Nombre del Pais</label>
+                          <input formControlName="nombre_pais" type="text" class="form-control" id="npais" aria-describedby="nombre_pais">
+                          <ng-container *ngFor="let validation of validationGroup.nombre_pais">
+                            <div *ngIf="frmRegistro.controls['nombre_pais'].hasError(validation.type) && (frmRegistro.controls['nombre_pais'].dirty || frmRegistro.controls['nombre_pais'].touched)">
+                              <small class="text-danger">{{validation.message}}</small>
+                            </div>
+                          </ng-container>
+                        </div>                       
+                  </form>
+              </div>
+          </div>
+          <div class="row mt-2" text-center>
+              <div class="col-2" ><input id="newOp" class="btn btn-primary btn-block" type="button" value="Nuevo" (click)="nuevoReg()"></div>
+              <div class="col-2" ><input id="saveOp" class="btn btn-success btn-block" type="button" value="Guardar" (click)="onSubmitData()"></div>
+              <div class="col-2" ><input id="editarOp" class="btn btn-warning btn-block" type="button" value="Editar" (click)="editarReg()"></div>
+              <div class="col-2" ><input id="cancelOp" class="btn btn-secondary btn-block" type="button" value="Cancelar" (click)="cancelar()"></div>
+          </div>
+          <div class="row mt-1 mb-1">
+              <div class="col-12">
+                <!-- Alertas edicion -->
+                <div class="alert alert-success" role="alert" *ngIf="estadoProcesoEditar==0">
+                  El registro se actualizo correctamente en la base de datos
+                </div>
+                <div class="alert alert-danger" role="alert" *ngIf="estadoProcesoEditar>0">
+                  Ocurrio un error al momento de editar el registro..Contacte a soporte.
+                </div>
+                <!-- Alertas Guardar -->
+                <div class="alert alert-success" role="alert" *ngIf="estadoProceso==0">
+                  El registro se creo correctamente en la base de datos
+                </div>
+                <div class="alert alert-danger" role="alert" *ngIf="estadoProceso>0">
+                  Ocurrio un error al momento de guardar el registro..Contacte a soporte.
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
