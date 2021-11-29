@@ -17,7 +17,7 @@
                 <tr *ngFor="let itemPais of misPaises">
                   <td>{{ itemPais.id_pais }}</td>
                   <td>{{ itemPais.nombre_pais }}</td>
-                  <td><img class="btn" src="assets/png/borrar.png" (click)="seleccionReg(itemPais.id_pais)"></td>
+                  <td><img class="btn" src="assets/png/borrar.png" width="45" height="30" (click)="seleccionReg(itemPais.id_pais)"></td>
                 </tr>
               </tbody>
               <tbody *ngIf="misPaises?.length == 0">
