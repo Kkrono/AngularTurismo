@@ -1,7 +1,7 @@
 export interface DepartamentoResponse {
 id_dep: string;
 nombre_dep: string;
-paises: number;
+pais: string;
 }
 
 interface Paises {

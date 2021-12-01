@@ -91,10 +91,12 @@ export class FrmdepartamentoComponent implements OnInit {
       let info={
         id:this.frmRegistro.controls['id'].value,
         nombre_dep:this.frmRegistro.controls['nombre_dep'].value,
-        paises:{
-          id:this.frmRegistro.controls['paises'].value
+        pais:{
+          id_pais:this.frmRegistro.controls['paises'].value
         }  
       }
+      console.log(info);
+
       this.depServ.InsertRecord(info).subscribe((result: { data: { idAux: any; }; })=>{
             this.estadoProceso=0;
       });
