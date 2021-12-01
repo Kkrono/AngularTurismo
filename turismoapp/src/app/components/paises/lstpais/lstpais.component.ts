@@ -27,7 +27,7 @@ export class LstpaisComponent implements OnInit {
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 5
+      pageLength: 15
     };
     this.Load();
   }

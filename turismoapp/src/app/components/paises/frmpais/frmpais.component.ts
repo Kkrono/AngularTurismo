@@ -17,16 +17,12 @@ export class FrmpaisComponent implements OnInit {
   estadoProcesoEditar:Number=-1;
   misPaises:PaisesResponse[]=[];
   validationMessage={
-    id:[
-      {type:'required',message:'El codigo del pais es obligatorio'}
-    ],
     nombre_pais:[
       {type:'required',message:'El nombre del pais es requerido'}
     ]
   }
   constructor(private fb:FormBuilder,private servPais:PaisesService) { 
     this.frmRegistro=this.fb.group({
-      id:new FormControl('',Validators.compose([Validators.required])),
       nombre_pais:new FormControl('',Validators.compose([Validators.required]))
     });
   }
@@ -109,7 +105,6 @@ export class FrmpaisComponent implements OnInit {
   {
     this.frmRegistro.setValue(
       {
-        id  : '',
         nombre_pais:''
       }
     );
