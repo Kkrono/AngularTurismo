@@ -21,9 +21,6 @@ export class FrmdepartamentoComponent implements OnInit {
   misDepartamentos:DepartamentoResponse[]=[];
   misPaises:PaisesResponse[]=[];
   validationMessage={
-    id:[
-      {type:'required',message:'El codigo del departamento es obligatorio'}
-    ],
     nombre_dep:[
       {type:'required',message:'El nombre del departamento es requerido'}
     ],
@@ -33,7 +30,6 @@ export class FrmdepartamentoComponent implements OnInit {
   }
   constructor(private fb:FormBuilder,private depServ:DepartamentoService,private paisSer:PaisesService) { 
     this.frmRegistro=this.fb.group({
-      id:new FormControl('',Validators.compose([Validators.required])),
       nombre_dep:new FormControl('',Validators.compose([Validators.required])),
       paises:new FormControl('',Validators.compose([Validators.required]))
     });
@@ -89,7 +85,6 @@ export class FrmdepartamentoComponent implements OnInit {
     let jQueryInstance = this;
     if (this.frmRegistro.valid) {
       let info={
-        id:this.frmRegistro.controls['id'].value,
         nombre_dep:this.frmRegistro.controls['nombre_dep'].value,
         pais:{
           id_pais:this.frmRegistro.controls['paises'].value
@@ -130,7 +125,6 @@ export class FrmdepartamentoComponent implements OnInit {
   {
     this.frmRegistro.setValue(
       {
-        id  : '',
         nombre_dep:'',
         paises:''
       }

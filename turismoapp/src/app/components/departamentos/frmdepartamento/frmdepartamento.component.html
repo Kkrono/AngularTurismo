@@ -12,15 +12,6 @@
               <div class="row">
                   <div class="col-12">
                       <form [formGroup]="frmRegistro" id="frmdatareg">
-                        <div class="form-group">
-                          <label for="id">Codigo Departamento</label>
-                          <input formControlName="id" type="text" class="form-control" id="id" aria-describedby="id">
-                          <ng-container *ngFor="let validation of validationMessage.id">
-                            <div *ngIf="frmRegistro.controls['id'].hasError(validation.type) && (frmRegistro.controls['id'].dirty || frmRegistro.controls['id'].touched)">
-                              <small class="text-danger">{{validation.message}}</small>
-                            </div>
-                          </ng-container>
-                        </div>
                           <div class="form-group">
                             <label for="nombre_dep">Nombre del Departamneto</label>
                             <input formControlName="nombre_dep" type="text" class="form-control" id="nombre_dep" aria-describedby="nombre_dep">
