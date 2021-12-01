@@ -71,7 +71,7 @@ export class FrmpaisComponent implements OnInit {
     this.InitFrm();
   }
   async CargarPaises(){
-    const result= await this.servPais.listarPaises();
+    const result= await this.servPais.listar();
   }
   onSubmitPais() {
     let jQueryInstance = this;

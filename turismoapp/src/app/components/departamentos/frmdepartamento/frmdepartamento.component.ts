@@ -79,9 +79,9 @@ export class FrmdepartamentoComponent implements OnInit {
     //this.InitFrm();
   }
   async LoadRecords(){
-    const result= await this.depServ.listarDpto();
+    const result= await this.depServ.listar();
     this.misDepartamentos=result;
-    const resultPaises= await this.paisSer.listarPaises();
+    const resultPaises= await this.paisSer.listar();
     this.misPaises=resultPaises;
     console.log(this.misPaises);
   }

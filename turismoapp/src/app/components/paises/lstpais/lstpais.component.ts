@@ -18,31 +18,31 @@ export class LstpaisComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject<any>();
   @ViewChild(DataTableDirective, { static: false })
   dtElement!: DataTableDirective;
-  misPaises: PaisesResponse[]=[];
+  misGlobalEntidad: PaisesResponse[]=[];
   idPk:Number=0;
   estadoProceso:Number=-1;
 
-  constructor(private paisServ:PaisesService) { }
+  constructor(private globalServ:PaisesService) { }
 
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5
     };
-    this.LoadPaises();
+    this.Load();
   }
   seleccionReg(id:Number){
     this.idPk=id;
     $('#confirmacion').modal('show');
   }
-  async LoadPaises(){
-    const result= await this.paisServ.listarPaises();
-    this.misPaises=result;
+  async Load(){
+    const result= await this.globalServ.listar();
+    this.misGlobalEntidad=result;
     this.dtTrigger.next();
   }
   eliminarRegistro(){
     let jQueryInstance=this;
-    this.paisServ.DeleteItemRecord(this.idPk).subscribe(result=>{
+    this.globalServ.DeleteItemRecord(this.idPk).subscribe(result=>{
  
           this.estadoProceso=0;
       
@@ -55,14 +55,14 @@ export class LstpaisComponent implements OnInit {
   }
   rerender(): void {
     
-    this.paisServ.listarPaises().then(result=>{
-      this.misPaises=result;
+    this.globalServ.listar().then(result=>{
+      this.misGlobalEntidad=result;
       this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
         // Destroy the table first
         dtInstance.destroy();
         // Call the dtTrigger to rerender again
         this.dtTrigger.next();
-        //this.LoadPaises();
+        //this.Load();
       });
     });
   

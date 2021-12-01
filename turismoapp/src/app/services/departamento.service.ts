@@ -25,7 +25,7 @@ export class DepartamentoService {
     const response = await fetch(`${this.URL_BASE}dpto/${id}`);
     return await response.json();
   }
-  async listarDpto(){
+  async listar(){
     const response = await fetch(`${this.URL_BASE}dpto`);
     return await response.json();
   }

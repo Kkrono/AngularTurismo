@@ -23,7 +23,7 @@ export class PaisesService {
     const response = await fetch(`${this.URL_BASE}paises/${id}`);
     return await response.json();
   }
-  async listarPaises(){
+  async listar(){
     const response = await fetch(`${this.URL_BASE}paises`);
     return await response.json();
   }

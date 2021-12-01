@@ -1,3 +1,54 @@
 <p>
   lstdepartamento works!
 </p>
+
+<div class="container mb-2">
+  <div class="row">
+      <div class="col-12">
+          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Codigo Departamento</th>
+                  <th>Nombre del Departamento</th>
+                  <th>&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let itemDepartamento of misGlobalEntidad">
+                  <td>{{ itemDepartamento.id_dep }}</td>
+                  <td>{{ itemDepartamento.nombre_dep }}</td>
+                 <!-- <td><img class="btn" src="assets/png/borrar.png" width="45" height="30" (click)="seleccionReg(itemDepartamento.id_dep)"></td> -->
+                </tr>
+              </tbody>
+              <tbody *ngIf="misGlobalEntidad?.length == 0">
+                <tr>
+                  <td colspan="3" class="no-data-available">No se encontraron registros...</td>
+                </tr>
+              </tbody>
+              </table>
+      </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal animated fade fadeIn" id="confirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h2 class="modal-title" id="exampleModalLabel">Eliminar</h2>
+          </div>
+          <div class="modal-body">
+            Desea eliminar el registro seleccionado.....
+          </div>
+          <div class="alert alert-success" role="alert" *ngIf="estadoProceso==0">
+              El registro se elimino correctamente en la base de datos
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="estadoProceso>0">
+              Ocurrio un error al momento de eliminar el registro..Contacte a soporte.
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            <button type="button" class="btn btn-primary" (click)="eliminarRegistro()">Si</button>
+          </div>
+      </div>
+  </div>
+</div>

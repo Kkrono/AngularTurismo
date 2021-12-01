@@ -14,13 +14,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let itemPais of misPaises">
-                  <td>{{ itemPais.id_pais }}</td>
-                  <td>{{ itemPais.nombre_pais }}</td>
-                  <td><img class="btn" src="assets/png/borrar.png" width="45" height="30" (click)="seleccionReg(itemPais.id_pais)"></td>
+                <tr *ngFor="let itemGlobal of misGlobalEntidad">
+                  <td>{{ itemGlobal.id_pais }}</td>
+                  <td>{{ itemGlobal.nombre_pais }}</td>
+                  <td><img class="btn" src="assets/png/borrar.png" width="45" height="30" (click)="seleccionReg(itemGlobal.id_pais)"></td>
                 </tr>
               </tbody>
-              <tbody *ngIf="misPaises?.length == 0">
+              <tbody *ngIf="misGlobalEntidad?.length == 0">
                 <tr>
                   <td colspan="3" class="no-data-available">No se encontraron registros...</td>
                 </tr>
