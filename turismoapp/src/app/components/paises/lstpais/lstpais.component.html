@@ -5,19 +5,22 @@
 <div class="container mb-2">
   <div class="row">
       <div class="col-12">
-          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-success table-striped">
               <thead>
                 <tr>
                   <th>Codigo Pais</th>
                   <th>Pais</th>
-                  <th>&nbsp;</th>
+                  <th>Opciones</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let itemGlobal of misGlobalEntidad">
                   <td>{{ itemGlobal.id_pais }}</td>
                   <td>{{ itemGlobal.nombre_pais }}</td>
-                  <td><img class="btn" src="assets/png/borrar.png" width="45" height="30" (click)="seleccionReg(itemGlobal.id_pais)"></td>
+                  <td>
+                    <img class="btn" src="assets/png/eliminar.png" width="40" height="30" (click)="seleccionReg(itemGlobal.id_pais)">
+                    <img class="btn" src="assets/png/editar.png" width="40" height="30" (click)="seleccionRegEditar(itemGlobal.id_pais)">
+                  </td>
                 </tr>
               </tbody>
               <tbody *ngIf="misGlobalEntidad?.length == 0">
@@ -48,6 +51,35 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
             <button type="button" class="btn btn-primary" (click)="eliminarRegistro()">Si</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Modal Editar -->
+<div class="modal animated fade fadeIn" id="formEditarPais" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h2 class="modal-title" id="exampleModalLabel">Editar Pais</h2>
+          </div>
+          <div class="modal-body">
+            <div class="centrado" >
+              Digite pais:
+              &nbsp;
+              <input type="input">
+            </div>
+            </div>
+
+          <div class="alert alert-success" role="alert" *ngIf="estadoProceso==0">
+              El registro se edito correctamente en la base de datos
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="estadoProceso>0">
+              Ocurrio un error al momento de editar el registro..Contacte a soporte.
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="eliminarRegistro()">Aceptar</button>
           </div>
       </div>
   </div>

@@ -35,6 +35,11 @@ export class LstpaisComponent implements OnInit {
     this.idPk=id;
     $('#confirmacion').modal('show');
   }
+  seleccionRegEditar(id:Number){
+    this.idPk=id;
+    $('#formEditarPais').modal('show');
+  }
+
   async Load(){
     const result= await this.globalServ.listar();
     this.misGlobalEntidad=result;

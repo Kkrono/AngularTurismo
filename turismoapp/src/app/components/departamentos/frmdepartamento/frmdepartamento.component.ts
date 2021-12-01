@@ -99,6 +99,7 @@ export class FrmdepartamentoComponent implements OnInit {
         jQueryInstance.estadoProceso=-1;
       },3000);
       this.editarReg();
+      this.InitFrm();
     } else {
       Object.keys(this.frmRegistro.controls).forEach(field => {
         const control: any = this.frmRegistro.get(field);

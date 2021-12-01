@@ -78,6 +78,8 @@ export class FrmpaisComponent implements OnInit {
       setTimeout(function(){
         jQueryInstance.estadoProceso=-1;
       },3000);
+      this.InitFrm();
+
       //this.editarReg();
     } else {
       Object.keys(this.frmRegistro.controls).forEach(field => {
