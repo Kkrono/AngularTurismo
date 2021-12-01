@@ -56,8 +56,8 @@ export class LstdepartamentoComponent implements OnInit {
   rerender(): void {
     
     this.globalService.listar().then(result=>{
-      this.misGlobalEntidad=result;
-      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        this.misGlobalEntidad=result;
+        this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
         // Destroy the table first
         dtInstance.destroy();
         // Call the dtTrigger to rerender again

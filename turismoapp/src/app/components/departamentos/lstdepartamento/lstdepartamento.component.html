@@ -9,15 +9,17 @@
               <thead>
                 <tr>
                   <th>Codigo Departamento</th>
-                  <th>Nombre del Departamento</th>
+                  <th>Departamento</th>
+                  <th>Pais</th>
                   <th>&nbsp;</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let itemDepartamento of misGlobalEntidad">
-                  <td>{{ itemDepartamento.id_dep }}</td>
-                  <td>{{ itemDepartamento.nombre_dep }}</td>
-                 <!-- <td><img class="btn" src="assets/png/borrar.png" width="45" height="30" (click)="seleccionReg(itemDepartamento.id_dep)"></td> -->
+                <tr *ngFor="let itemGlobal of misGlobalEntidad">
+                  <td>{{ itemGlobal.id_dep }}</td>
+                  <td>{{ itemGlobal.nombre_dep }}</td>
+                  <td>{{ itemGlobal.pais.nombre_pais }}</td>
+                  <td><img class="btn" src="assets/png/borrar.png" width="45" height="30" (click)="seleccionReg(itemGlobal.id_dep)"></td>
                 </tr>
               </tbody>
               <tbody *ngIf="misGlobalEntidad?.length == 0">

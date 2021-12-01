@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DepartamentoResponse } from 'src/app/models/departamento-response';
-import { PaisesResponse } from 'src/app/models/paises-response';
 import { DepartamentoService } from 'src/app/services/departamento.service';
+import { PaisesResponse } from 'src/app/models/paises-response';
 import { PaisesService } from 'src/app/services/paises.service';
 import { PaisesComponent } from 'src/app/components/paises/paises.component';
 
