@@ -71,6 +71,9 @@ export class LstpaisComponent implements OnInit {
     const id=this.idPk;
     let jQueryInstance=this;
 
+    if (this.txtEditar==""){
+      this.txtEditar=this.nombrePaisEditar;
+    }
     //this.nombrePaisEditar=this.txtNombrePais.nativeElement.value;
     console.log(this.txtEditar);
     let info={

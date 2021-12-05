@@ -103,10 +103,9 @@ export class LstdepartamentoComponent implements OnInit {
   editarReg(){
     const id=this.idPk;
     let jQueryInstance=this;
-
-    //this.nombrePaisEditar=this.txtNombrePais.nativeElement.value;
-    console.log(this.txtEditar);
-    console.log(this.idPaisSeleccionado);
+    if (this.txtEditar==""){
+      this.txtEditar=this.datoEditar;
+    }
 
     let info={
       nombre_dep:this.txtEditar,
@@ -114,9 +113,10 @@ export class LstdepartamentoComponent implements OnInit {
         id_pais:this.idPaisSeleccionado
       }  
     }
-    //$('#formEditar').modal('hide');
 
-    //this.globalServ.UpdateRecord("aaa",id).subscribe(result=>{
+    console.log(this.txtEditar);
+    console.log(this.idPaisSeleccionado);
+    console.log(info);
 
     this.globalService.UpdateRecord(info,id).subscribe(result=>{
     this.estadoProceso=0;
@@ -125,7 +125,7 @@ export class LstdepartamentoComponent implements OnInit {
       jQueryInstance.estadoProceso=-1;
       $('#formEditar').modal('hide');
       jQueryInstance.rerender();
-    },2000);
+    },1500);
     
   }
 
