@@ -4,53 +4,97 @@
 
 <div class="container mb-2">
   <div class="row">
-      <div class="col-12">
-          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
-              <thead>
-                <tr>
-                  <th>Codigo Departamento</th>
-                  <th>Departamento</th>
-                  <th>Pais</th>
-                  <th>&nbsp;</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let itemGlobal of misGlobalEntidad">
-                  <td>{{ itemGlobal.id_dep }}</td>
-                  <td>{{ itemGlobal.nombre_dep }}</td>
-                  <td>{{ itemGlobal.pais.nombre_pais }}</td>
-                  <td><img class="btn" src="assets/png/borrar.png" width="45" height="30" (click)="seleccionReg(itemGlobal.id_dep)"></td>
-                </tr>
-              </tbody>
-              <tbody *ngIf="misGlobalEntidad?.length == 0">
-                <tr>
-                  <td colspan="3" class="no-data-available">No se encontraron registros...</td>
-                </tr>
-              </tbody>
-              </table>
-      </div>
+    <div class="col-12">
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+        <thead>
+          <tr>
+            <th>Codigo Departamento</th>
+            <th>Departamento</th>
+            <th>Pais</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let itemGlobal of misGlobalEntidad">
+            <td>{{ itemGlobal.id_dep }}</td>
+            <td>{{ itemGlobal.nombre_dep }}</td>
+            <td>{{ itemGlobal.pais.nombre_pais }}</td>
+            <td>
+              <img class="btn" src="assets/png/eliminar.png" width="40" height="30"
+                (click)="seleccionReg(itemGlobal.id_dep)">
+              <img class="btn" src="assets/png/editar.png" width="40" height="30"
+                (click)="seleccionRegEditar(itemGlobal.id_dep,itemGlobal.nombre_dep)">
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="misGlobalEntidad?.length == 0">
+          <tr>
+            <td colspan="3" class="no-data-available">No se encontraron registros...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 <!-- Modal -->
-<div class="modal animated fade fadeIn" id="confirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+<div class="modal animated fade fadeIn" id="confirmacion" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h2 class="modal-title" id="exampleModalLabel">Eliminar</h2>
-          </div>
-          <div class="modal-body">
-            Desea eliminar el registro seleccionado.....
-          </div>
-          <div class="alert alert-success" role="alert" *ngIf="estadoProceso==0">
-              El registro se elimino correctamente en la base de datos
-            </div>
-            <div class="alert alert-danger" role="alert" *ngIf="estadoProceso>0">
-              Ocurrio un error al momento de eliminar el registro..Contacte a soporte.
-            </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-            <button type="button" class="btn btn-primary" (click)="eliminarRegistro()">Si</button>
-          </div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Eliminar</h2>
       </div>
+      <div class="modal-body">
+        Desea eliminar el registro seleccionado.....
+      </div>
+      <div class="alert alert-success" role="alert" *ngIf="estadoProceso==0">
+        El registro se elimino correctamente en la base de datos
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="estadoProceso>0">
+        Ocurrio un error al momento de eliminar el registro..Contacte a soporte.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary" (click)="eliminarRegistro()">Si</button>
+      </div>
+    </div>
   </div>
 </div>
+
+<!-- Modal Editar -->
+  <div class="modal animated fade fadeIn" id="formEditar" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Editar Departamento:</h2>
+        </div>
+        <div class="modal-body">
+          <div class="centrado">
+            Digite Departamento:
+            &nbsp;
+            &nbsp;
+            <input [(ngModel)]='txtEditar' type="input" id="txtEditar" value="{{ datoEditar }}">
+            </div>
+
+          <div class="form-group">
+            <label for="exampleDataList" class="form-label">Seleccione un Pais</label>
+            <select [(ngModel)]='txtEditarPais' (change)="capturar()" class="form-select" aria-label="Default select example">
+                <option value="{{item.id_pais}}" *ngFor="let item of misPaises">{{item.nombre_pais}}</option>
+            </select>
+          </div>
+
+        </div>
+        <div class="alert alert-success" role="alert" *ngIf="estadoProceso==0">
+          El registro se edito correctamente en la base de datos
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="estadoProceso>0">
+          Ocurrio un error al momento de editar el registro..Contacte a soporte.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" (click)="editarReg()" value="Editar">Editar</button>
+        </div>
+      </div>
+    </div>
+  </div>

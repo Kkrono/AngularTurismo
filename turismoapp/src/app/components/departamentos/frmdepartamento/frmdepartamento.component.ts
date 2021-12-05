@@ -98,7 +98,7 @@ export class FrmdepartamentoComponent implements OnInit {
       setTimeout(function(){
         jQueryInstance.estadoProceso=-1;
       },3000);
-      this.editarReg();
+      this.cancelar();
       this.InitFrm();
     } else {
       Object.keys(this.frmRegistro.controls).forEach(field => {

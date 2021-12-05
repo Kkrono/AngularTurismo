@@ -22,7 +22,7 @@
                             </ng-container>
                           </div>
                           <div class="form-group">
-                              <label for="exampleDataList" class="form-label">Datalist example</label>
+                              <label for="exampleDataList" class="form-label">Seleccione un Pais</label>
                               <select formControlName="paises" class="form-select" aria-label="Default select example">
                                   <option selected>Seleccione un Pais</option>
                                   <option value="{{item.id_pais}}" *ngFor="let item of misPaises">{{item.nombre_pais}}</option>
@@ -39,7 +39,6 @@
               <div class="row mt-2">
                   <div class="col-3" ><input id="newOp" class="btn btn-primary btn-block" type="button" (click)="nuevoReg()"   value="Nuevo"></div>
                   <div class="col-3" ><input id="saveOp" class="btn btn-success btn-block" type="button" (click)="onSubmitPais()"  value="Guardar"></div>
-                  <div class="col-3" ><input id="editarOp" class="btn btn-warning btn-block" type="button" value="Editar"></div>
                   <div class="col-3" ><input id="cancelOp" class="btn btn-secondary btn-block" type="button"  value="Cancelar"></div>
               </div>
               <div class="row mt-1 mb-1">

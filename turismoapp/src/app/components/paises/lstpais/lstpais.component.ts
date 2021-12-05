@@ -73,8 +73,11 @@ export class LstpaisComponent implements OnInit {
 
     //this.nombrePaisEditar=this.txtNombrePais.nativeElement.value;
     console.log(this.txtEditar);
+    let info={
+      nombre_pais:this.txtEditar
+    }
     //this.globalServ.UpdateRecord("aaa",id).subscribe(result=>{
-    this.globalServ.UpdateRecord(this.txtEditar,id).subscribe(result=>{
+    this.globalServ.UpdateRecord(info,id).subscribe(result=>{
     this.estadoProceso=0;
     });
     setTimeout(function(){
