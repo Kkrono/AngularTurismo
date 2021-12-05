@@ -22,7 +22,8 @@ export class LstpaisComponent implements OnInit {
   idPk:string="";
   estadoProceso:Number=-1;
   nombrePaisEditar:string="";
-
+  txtEditar:string="";
+  
   constructor(private globalServ:PaisesService) { }
 
   ngOnInit(): void {
@@ -68,11 +69,13 @@ export class LstpaisComponent implements OnInit {
 
   editarReg(){
     const id=this.idPk;
-    //console.log(id);
     let jQueryInstance=this;
-    this.globalServ.UpdateRecord("aaa",id).subscribe(result=>{
-     // this.globalServ.UpdateRecord(this.nombrePaisEditar,id).subscribe(result=>{
-        this.estadoProceso=0;
+
+    //this.nombrePaisEditar=this.txtNombrePais.nativeElement.value;
+    console.log(this.txtEditar);
+    //this.globalServ.UpdateRecord("aaa",id).subscribe(result=>{
+    this.globalServ.UpdateRecord(this.txtEditar,id).subscribe(result=>{
+    this.estadoProceso=0;
     });
     setTimeout(function(){
       jQueryInstance.estadoProceso=-1;

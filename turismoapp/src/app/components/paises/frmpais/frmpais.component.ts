@@ -69,7 +69,7 @@ export class FrmpaisComponent implements OnInit {
   async CargarPaises(){
     const result= await this.servPais.listar();
   }
-  onSubmitPais() {
+  onSubmitGuardar() {
     let jQueryInstance = this;
     if (this.frmRegistro.valid) {
       this.servPais.InsertRecord(this.frmRegistro.value).subscribe((result: { data: { ErrNumber: number; idAux: any; }; })=>{
@@ -78,6 +78,7 @@ export class FrmpaisComponent implements OnInit {
       setTimeout(function(){
         jQueryInstance.estadoProceso=-1;
       },3000);
+      this.cancelar();
       this.InitFrm();
 
       //this.editarReg();
