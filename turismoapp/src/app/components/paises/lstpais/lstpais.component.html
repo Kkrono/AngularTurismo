@@ -1,6 +1,7 @@
 <p>
   lstpais works!
 </p>
+<meta charset="UTF-8">
 
 <div class="container mb-2">
   <div class="row">
@@ -19,7 +20,7 @@
                   <td>{{ itemGlobal.nombre_pais }}</td>
                   <td>
                     <img class="btn" src="assets/png/eliminar.png" width="40" height="30" (click)="seleccionReg(itemGlobal.id_pais)">
-                    <img class="btn" src="assets/png/editar.png" width="40" height="30" (click)="seleccionRegEditar(itemGlobal.id_pais)">
+                    <img class="btn" src="assets/png/editar.png" width="40" height="30" (click)="seleccionRegEditar(itemGlobal.id_pais,itemGlobal.nombre_pais)">
                   </td>
                 </tr>
               </tbody>
@@ -67,7 +68,7 @@
             <div class="centrado" >
               Digite pais:
               &nbsp;
-              <input type="input">
+              <input type="input" id="txtEditar" value="{{nombrePaisEditar}}">
             </div>
             </div>
 
@@ -79,7 +80,7 @@
             </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary" (click)="eliminarRegistro()">Aceptar</button>
+            <button type="button" class="btn btn-primary" (click)="editarReg()" value="Editar">Editar</button> 
           </div>
       </div>
   </div>

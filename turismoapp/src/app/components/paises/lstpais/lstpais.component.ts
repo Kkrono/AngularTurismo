@@ -19,8 +19,9 @@ export class LstpaisComponent implements OnInit {
   @ViewChild(DataTableDirective, { static: false })
   dtElement!: DataTableDirective;
   misGlobalEntidad: PaisesResponse[]=[];
-  idPk:Number=0;
+  idPk:string="";
   estadoProceso:Number=-1;
+  nombrePaisEditar:string="";
 
   constructor(private globalServ:PaisesService) { }
 
@@ -31,13 +32,19 @@ export class LstpaisComponent implements OnInit {
     };
     this.Load();
   }
-  seleccionReg(id:Number){
+  seleccionReg(id:string){
     this.idPk=id;
     $('#confirmacion').modal('show');
+//    console.log(Number(id));
+//    console.log(this.misGlobalEntidad[Number(id)].nombre_pais);
   }
-  seleccionRegEditar(id:Number){
+  seleccionRegEditar(id:string, nombre:string){
     this.idPk=id;
     $('#formEditarPais').modal('show');
+    //this.nombrePaisEditar=this.misGlobalEntidad[Number(id)].nombre_pais;
+      //console.log(Number(id));
+      //console.log(nombre);
+      this.nombrePaisEditar=nombre;
   }
 
   async Load(){
@@ -58,6 +65,24 @@ export class LstpaisComponent implements OnInit {
       jQueryInstance.rerender();
     },3000);
   }
+
+  editarReg(){
+    const id=this.idPk;
+    //console.log(id);
+    let jQueryInstance=this;
+    this.globalServ.UpdateRecord("aaa",id).subscribe(result=>{
+     // this.globalServ.UpdateRecord(this.nombrePaisEditar,id).subscribe(result=>{
+        this.estadoProceso=0;
+    });
+    setTimeout(function(){
+      jQueryInstance.estadoProceso=-1;
+      $('#formEditarPais').modal('hide');
+      jQueryInstance.rerender();
+    },2000);
+  }
+
+
+
   rerender(): void {
     
     this.globalServ.listar().then(result=>{

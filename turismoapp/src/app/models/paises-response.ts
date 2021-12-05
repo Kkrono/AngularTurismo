@@ -1,4 +1,4 @@
 export interface PaisesResponse {
-    id_pais: number;
+    id_pais: string;
     nombre_pais: string;
   }
